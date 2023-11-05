@@ -1,0 +1,22 @@
+AA001 Foundation in Accounting
+BK101 Diploma in Corporate Communication
+AA103 Diploma in Accountancy
+EV101 Diploma in Civil Engineering (Construction Safety)
+BS101 Diploma in Sports Management
+CC101 Diploma in Computer Science
+AO101 Diploma in Office Management
+BE101 Diploma in Teaching English as Secondary Language (TESL)
+CT104 Diploma in Multimedia
+CM101 Diploma in Animation
+CM102 Diploma in Game Design
+AM101 Diploma in Digital Marketing
+BE102 Diploma in Early Childhood Education
+DN101 Diploma in Nursing
+AT101 Diploma in Tourism Management
+AA101 Diploma in Accounting
+AB101 Diploma in Business Management
+AF101 Diploma in Islamic Banking and Finance
+CT108 Diploma in Computer Graphic Design
+CC103 Diploma in Computer System and Networking
+CT103 Diploma in Information Technology
+AB107 Diploma in Human Resource Management

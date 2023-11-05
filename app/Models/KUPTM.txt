@@ -1,0 +1,46 @@
+KUPTM /
+BK101 Diploma in Corporate Communication
+CC101 Diploma in Computer Science
+AA103 Diploma in Accountancy
+
+BANGI
+BS101 Diploma in Sports Management
+AA001 Foundation in Accounting
+AA101 Diploma in Accounting
+AB101 Diploma in Business Management
+AF101 Diploma in Islamic Banking and Finance
+
+KUANTAN
+EV101 Diploma in Civil Engineering (Construction Safety)
+BS101 Diploma in Sports Management
+AA101 Diploma in Accounting
+AB101 Diploma in Business Management
+AB107 Diploma in Human Resource Management
+
+ALOR SETAR
+AT101 Diploma in Tourism Management
+CC101 Diploma in Computer Science
+AA101 Diploma in Accounting
+AB101 Diploma in Business Management
+AO101 Diploma in Office Management
+
+IPOH
+BE101 Diploma in Teaching English as Secondary Language (TESL)
+CT104 Diploma in Multimedia
+CM101 Diploma in Animation
+CM102 Diploma in Game Design
+AM101 Diploma in Digital Marketing
+
+KOTA BAHARU
+BE102 Diploma Pendidikan Awal Kanak-Kanak
+DN101 Diploma Kejururawatan
+AT101 Diploma in Tourism Management
+AA101 Diploma in Accounting
+AB101 Diploma in Business Management
+AF101 Diploma in Islamic Banking and Finance
+
+BATU PAHAT
+CT108 Diploma in Computer Graphic Design
+CC103 Diploma in Computer System and Networking
+CT103 Diploma in Information Technology
+AB107 Diploma in Human Resource Management
