@@ -60,7 +60,7 @@ class ApplicationController extends Controller
 
         // insert SPM result
 
-        return response($application->id, 200);
+        return response($application, 200);
     }
 
     /**

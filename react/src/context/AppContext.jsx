@@ -158,7 +158,11 @@ export let AppContextProvider = ({ children }) => {
             );
 
         AxiosClient.post("/application", applicationData)
-            .then((res) => console.log(res))
+            .then((res) => {
+                setTimeout(() => {
+                    setViewApplicationDetails(res.data);
+                }, 1000);
+            })
             .catch((err) => {
                 if (err.response.status === 404) {
                     notify(err.message + " Try again later");
@@ -200,7 +204,8 @@ export let AppContextProvider = ({ children }) => {
                 setSubjectList,
                 gredList,
                 setGredList,
-                viewApplicationDetails, setViewApplicationDetails
+                viewApplicationDetails,
+                setViewApplicationDetails,
             }}
         >
             {children}

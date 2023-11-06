@@ -4,13 +4,13 @@ import jsPDF from "jspdf";
 import { useContext } from "react";
 import AppContext from "../../../context/AppContext";
 
-const ApplicationDetailViewer = () => {
+const ApplicationDetailViewerGuest = () => {
     const {
         gredList,
         subjectList,
         viewApplicationDetails,
         setViewApplicationDetails,
-        notify
+        notify,
     } = useContext(AppContext);
 
     let {
@@ -303,15 +303,6 @@ const ApplicationDetailViewer = () => {
                         <div className="ms-md-auto col-md-6 text-center text-md-end">
                             <button
                                 type="button"
-                                className="btn btn-secondary me-2"
-                                onClick={() => {
-                                    setViewApplicationDetails(null);
-                                }}
-                            >
-                                BACK
-                            </button>
-                            <button
-                                type="button"
                                 className="btn btn-danger"
                                 onClick={() => {
                                     let formTarget =
@@ -319,7 +310,7 @@ const ApplicationDetailViewer = () => {
                                             "downloadFormTarget"
                                         );
 
-                                        notify("Downloading Please Wait")
+                                    notify("Downloading Please Wait");
 
                                     $(formTarget).toggleClass("d-none");
 
@@ -338,13 +329,20 @@ const ApplicationDetailViewer = () => {
                                             300
                                         );
 
-                                        notify("Finished Downloading, please check download folder")
                                         pdfer.save(
                                             `KPTMApplication(${icno}${application_id}).pdf`
                                         );
 
+                                        notify(
+                                            "Finished Downloading, please check download folder"
+                                        );
 
-
+                                        setTimeout(() => {
+                                            let gotoMain =
+                                                document.createElement("a");
+                                            gotoMain.href = "/application";
+                                            gotoMain.click();
+                                        }, 1000);
                                     });
 
                                     $(formTarget).toggleClass("d-none");
@@ -516,4 +514,4 @@ const ApplicationDetailViewer = () => {
     );
 };
 
-export default ApplicationDetailViewer;
+export default ApplicationDetailViewerGuest;

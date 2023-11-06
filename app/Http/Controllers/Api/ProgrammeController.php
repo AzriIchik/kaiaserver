@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Programme;
 use Illuminate\Http\Request;
-use App\Models\CampusProgramme;
 use App\Http\Controllers\Controller;
 use App\Models\ProgrammeRequirement;
 use App\Http\Requests\StoreProgrammeRequest;
@@ -21,7 +20,7 @@ class ProgrammeController extends Controller
     public function index()
     {
 
-        $programme = Programme::all()->campus();
+        $programme = Programme::all();
         return response($programme, 200);
     }
 

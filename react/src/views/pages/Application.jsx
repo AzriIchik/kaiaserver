@@ -1,10 +1,13 @@
 import FormSPMChecker from "../form-components/FormSPMChecker/FormSPMChecker";
 import FormApplicableProgramme from "../form-components/FormApplicableProgramme/FormApplicableProgramme";
 import FormApplicationInformation from "../form-components/FormApplicationInformation/FormApplicationInformation";
-import { useEffect, useRef } from "react";
-
+import { useContext, useEffect, useRef } from "react";
+import AppContext from "../../context/AppContext";
+import ApplicationDetailViewerGuest from "../components/ApplicationDetailViewerGuest/ApplicationDetailViewerGuest";
 
 const Application = () => {
+    const { viewApplicationDetails, setViewApplicationDetails } =
+        useContext(AppContext);
 
     // Staff ID Later for Management
     useEffect(() => {
@@ -18,9 +21,9 @@ const Application = () => {
         <div
             className="d-flex"
             style={{
-                height: "100vh",
+                height: "fit-content",
                 marginTop: "10em",
-                marginBottom: "50em",
+                marginBottom: "10em",
             }}
         >
             <div className="container my-auto">
@@ -32,12 +35,18 @@ const Application = () => {
                     </h5>
                 </div>
                 <hr />
-                <FormSPMChecker></FormSPMChecker>
-                <FormApplicableProgramme></FormApplicableProgramme>
-                <FormApplicationInformation></FormApplicationInformation>
-            </div>
 
-        <InstructionModal></InstructionModal>
+                {viewApplicationDetails ? (
+                    <ApplicationDetailViewerGuest></ApplicationDetailViewerGuest>
+                ) : (
+                    <>
+                        <FormSPMChecker></FormSPMChecker>
+                        <FormApplicableProgramme></FormApplicableProgramme>
+                        <FormApplicationInformation></FormApplicationInformation>
+                    </>
+                )}
+            </div>
+            <InstructionModal></InstructionModal>
         </div>
     );
 };
@@ -81,9 +90,21 @@ const InstructionModal = () => {
                         </div>
                         <div className="modal-body">
                             <h2>
-                                This system is still in development phase, and should be treated as prototype and not actually a fully functional system. Additionally it is not a system owned by Kolej Poly-Tech Mara Sdn Bhd (KPTMSB), and currently used as a demonstartion to new introduce a new use of technology for KPTMSB in innovation competition 2023 (VICE 2023)
+                                This system is still in development phase, and
+                                should be treated as prototype and not actually
+                                a fully functional system. Additionally it is
+                                not a system owned by Kolej Poly-Tech Mara Sdn
+                                Bhd (KPTMSB), and currently used as a
+                                demonstartion to new introduce a new use of
+                                technology for KPTMSB in innovation competition
+                                2023 (VICE 2023)
                                 <div className="mt-5">
-                                    To enquire more please contact (En Azri bin Perisiben) at <a href="tel:0146511665">1046511665</a> / <a href="mailto:azriperisiben@gmail.com">azriperisiben@gmail.com</a>
+                                    To enquire more please contact (En Azri bin
+                                    Perisiben) at{" "}
+                                    <a href="tel:0146511665">0146511665</a> /{" "}
+                                    <a href="mailto:azriperisiben@gmail.com">
+                                        azriperisiben@gmail.com
+                                    </a>
                                 </div>
                             </h2>
                         </div>
