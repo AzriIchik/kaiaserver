@@ -12,4 +12,6 @@ class ApplicationProgramme extends Model
     public  $primary = 'app_prog_id';
     public $timestamps = false;
     protected $fillable = ['app_prog_id','application_id', 'cp_id'];
+
+    public $visibles = ['cp_id'];
 }

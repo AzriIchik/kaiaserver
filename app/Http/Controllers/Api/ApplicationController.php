@@ -5,7 +5,13 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\ApplicationProgramme;
+use App\Models\Campus;
+use App\Models\CampusProgramme;
+use App\Models\Gred;
+use App\Models\Programme;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {
@@ -48,17 +54,26 @@ class ApplicationController extends Controller
 
         // insert Programme Result
         $appliedProgramme = json_decode($request->programme);
+        $programmeList = array();
 
         foreach ($appliedProgramme as $programme) {
 
-            ApplicationProgramme::create([
-                "app_prog_id" => $application->id . $programme->campus->id,
-                "application_id" => $application->id,
+            $applicationCampusProgramme = ApplicationProgramme::create([
+                "app_prog_id" => $application->application_id . $programme->campus->id,
+                "application_id" => $application->application_id,
                 "cp_id" => $programme->campus->id
             ]);
+
+            $cpRes = CampusProgramme::all()->where("cp_id", $applicationCampusProgramme->cp_id)->first();
+
+            $programmeList[] = [
+                "campus" => Campus::all()->where("id", $cpRes->campus_id)->first(),
+                "programme" => Programme::all()->where("code", $cpRes->programme_code)->first(),
+            ];
+
         }
 
-        // insert SPM result
+        $application["programme"] = $programmeList;
 
         return response($application, 200);
     }
@@ -71,7 +86,28 @@ class ApplicationController extends Controller
      */
     public function show(Application $application)
     {
-        //
+
+        $programme = DB::table("application_programmes")->join("campus_programmes", "application_programmes.cp_id", "=", "campus_programmes.cp_id")->join("programmes", "campus_programmes.programme_code", "=", "programmes.code")->join("campuses", "campus_programmes.campus_id", "=", "campuses.id")->select("campuses.name as campus_name", "programmes.code as programme_code", "programmes.name as programme_name")->where("application_id","=", $application->application_id)->get();
+
+        $spmresult = json_decode($application->spmresult);
+        $temspmres = array();
+
+        foreach ($spmresult as $result) {
+
+            $subject = Subject::find($result->subject);
+            $gred = Gred::find($result->gred);
+
+            $temspmres[] = [
+                "subject"=> $subject->name,
+                "gred" => $gred->gred
+            ];
+        }
+
+
+        $application["programmes"] = $programme;
+        $application["spmresult"] = $temspmres;
+
+        return response($application, 200);
     }
 
     /**
